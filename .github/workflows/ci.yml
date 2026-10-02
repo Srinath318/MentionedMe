@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  desktop-build-and-test:
+    name: Build & Test Desktop (.NET 8 WPF)
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore Desktop dependencies
+        run: dotnet restore MentionedMe.csproj
+
+      - name: Build Desktop (Release)
+        run: dotnet build MentionedMe.csproj -c Release --no-restore
+
+      - name: Run Automated Tests
+        run: dotnet test tests\MentionedMe.Tests\MentionedMe.Tests.csproj -c Release --verbosity normal
+
+  relay-check:
+    name: Validate Relay Server (Node.js)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: relay/package-lock.json
+
+      - name: Install Relay Dependencies
+        run: |
+          cd relay
+          npm ci
+
+      - name: Validate Server Syntax
+        run: node --check relay/server.js

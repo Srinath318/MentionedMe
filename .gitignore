@@ -1,23 +1,131 @@
-# Node
+# ====================================================================
+# MentionedMe - Comprehensive Git Ignore
+# Covers: .NET / C# / WPF, React Native / Expo, Node.js, IDEs, OS, logs
+# ====================================================================
+
+# --------------------------------------------------------------------
+# .NET / C# / WPF Build Outputs & Artifacts
+# --------------------------------------------------------------------
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+ARM/
+ARM64/
+bld/
+[Bb]uild/
+[Dd]ist/
+[Pp]ublish/
+Generated\ Files/
+*.nupkg
+*.snupkg
+project.lock.json
+project.assets.json
+*.nuget.props
+*.nuget.targets
+
+# MSBuild / Visual Studio Temporary Files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.dbmdl
+*.jfm
+*.opendb
+*.VC.db
+*.VC.opendb
+.vs/
+.cr/
+
+# JetBrains Rider / ReSharper
+.idea/
+*.DotSettings.user
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Test & Coverage Outputs
+TestResults/
+[Tt]est[Rr]esult*/
+coverage/
+*.coverage
+*.coveragexml
+
+# --------------------------------------------------------------------
+# Node.js & Relay Server
+# --------------------------------------------------------------------
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-store/
 
-# .NET / C#
-bin/
-obj/
+# Relay runtime data storage
+relay/data/*.json
+!relay/data/.gitkeep
 
-# IDE
-.vs/
-.vscode/
-.idea/
+# --------------------------------------------------------------------
+# React Native / Expo (mobile/)
+# --------------------------------------------------------------------
+.expo/
+.expo-shared/
+web-build/
+dist/
 
-# Environment / secrets
+# Native prebuilds
+mobile/android/
+mobile/ios/
+*.orig.*
+
+# --------------------------------------------------------------------
+# Whisper Models & Runtime Audio Dumps
+# --------------------------------------------------------------------
+models/
+*.bin
+*.bin.tmp
+*.wav
+*.mp3
+
+# --------------------------------------------------------------------
+# Environment, Credentials & Secrets
+# --------------------------------------------------------------------
 .env
 .env.*
 !.env.example
+*.pem
+*.key
+*.cert
+*.pfx
+*.p12
 
-# OS
+# --------------------------------------------------------------------
+# Operating System & Cache Files
+# --------------------------------------------------------------------
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# --------------------------------------------------------------------
+# Logs & Scratch
+# --------------------------------------------------------------------
+*.log
+*.tmp
+*.bak
+*.swp
+*~

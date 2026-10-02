@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "MentionedMe",
+    "slug": "mentionedme",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#0D1117"
+    },
+    "ios": {
+      "supportsTabletMode": false,
+      "bundleIdentifier": "com.mentionedme.app"
+    },
+    "android": {
+      "package": "com.mentionedme.app",
+      "permissions": [
+        "RECEIVE_BOOT_COMPLETED",
+        "VIBRATE",
+        "NOTIFICATIONS"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "color": "#2563EB",
+          "defaultChannel": "mention-alerts"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "88998899-1122-3344-5566-778899001122"
+      }
+    }
+  }
+}
